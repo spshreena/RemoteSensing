@@ -101,5 +101,17 @@ print(evi)
 Map.centerObject(AOI, 9);
 Map.addLayer(evi, eviParams, 'EVI image');
 
+//NDWI
+var ndwi = nir.subtract(swir).divide(nir.add(swir)).rename('NDWI');
+print(ndwi)
+var ndwiParams = {
+  min: 0.0,
+  max: 1.0,
+  palette: ['0000ff', '00ffff', 'ffff00', 'ff0000', 'ffffff'],
+};
+Map.centerObject(AOI, 9);
+Map.addLayer(ndwi, ndwiParams, 'NDWI image');
+
+
 
 
