@@ -31,5 +31,38 @@ Map.addLayer(scene, TCC, 'true-color composite');
 var TFCC = {bands: ['B4', 'B3', 'B2'], max: 0.3};
 Map.addLayer(scene, TFCC, 'false-color composite');
 //----------------------------------------------------------------------------------------------------------------
+// Creating  buffers 1000m, 1500m, 2000m, 2500m, 3000m 
 
+var AOI = ee.FeatureCollection(AOI);
+
+var buff1000 = AOI.map(function(f) {
+  return f.buffer(1000, 100); // Note that the errorMargin is set to 100.
+});
+Map.addLayer(buff1000, {color: 'green'}, '1000buff');
+
+var buff1500 = AOI.map(function(f) {
+  return f.buffer(1500, 100); // Note that the errorMargin is set to 100.
+});
+
+Map.addLayer(buff1500, {color: 'blue'}, '1500buff');
+
+
+var buff2000 = AOI.map(function(f) {
+  return f.buffer(2000, 100); // Note that the errorMargin is set to 100.
+});
+
+Map.addLayer(buff2000, {color: 'orange'}, '2000buff');
+
+var buff2500 = AOI.map(function(f) {
+  return f.buffer(2500, 100); // Note that the errorMargin is set to 100.
+});
+
+Map.addLayer(buff2000, {color: 'teal'}, '2500buff');
+
+var buff3000 = AOI.map(function(f) {
+  return f.buffer(3000, 100); // Note that the errorMargin is set to 100.
+});
+
+Map.addLayer(buff3000, {color: 'pink'}, '3000buff');
+//----------------------------------------------------------------------------------------------------------------------------------
 
