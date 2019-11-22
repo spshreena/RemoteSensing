@@ -65,4 +65,16 @@ var buff3000 = AOI.map(function(f) {
 
 Map.addLayer(buff3000, {color: 'pink'}, '3000buff');
 //----------------------------------------------------------------------------------------------------------------------------------
+//Indices 
+//NDVI
+var nir = scene.select('B4');
+var red = scene.select('B3');
+var blue= scene.select('B1')
+
+var ndvi = nir.subtract(red).divide(nir.add(red)).rename('NDVI');
+print(ndvi)
+
+Map.centerObject(AOI, 9);
+var ndviParams = {min: -1, max: 1, palette: ['blue', 'white', 'green']};
+Map.addLayer(ndvi, ndviParams, 'NDVI image');
 
