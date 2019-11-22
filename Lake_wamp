@@ -1,0 +1,35 @@
+//Import study area 
+var AOI = ee.FeatureCollection('users/shreenapyakurel/AOI_dissolve');
+AOI = AOI.geometry();
+Map.centerObject(AOI);
+Map.addLayer(AOI, {color: 'yellow'}, 'AOI');
+
+//-----------------------------------------------------------------------------------------------------------------
+//Import landsat 5 image tile
+var dataset = ee.ImageCollection('LANDSAT/LT05/C01/T1_TOA')
+
+//sort by time and location to get the best tile
+var spatialFiltered = dataset.filterBounds(AOI);
+print('spatialFiltered', spatialFiltered);
+
+var temporalFiltered = spatialFiltered.filterDate('2002-04-01', '2002-5-31');
+print('temporalFiltered', temporalFiltered);
+
+// This will sort from least to most cloudy.
+var sorted = temporalFiltered.sort('CLOUD_COVER');
+print("sorted", sorted)
+
+// Get the first (least cloudy) image.
+var scene = sorted.first();
+
+//----------------------------------------------------------------------------------------------------------------
+// visualizing images in composites 
+Map.centerObject(AOI);
+var TCC = {bands: ['B3', 'B2', 'B1'], max: 0.3};
+Map.addLayer(scene, TCC, 'true-color composite');
+
+var TFCC = {bands: ['B4', 'B3', 'B2'], max: 0.3};
+Map.addLayer(scene, TFCC, 'false-color composite');
+//----------------------------------------------------------------------------------------------------------------
+
+
