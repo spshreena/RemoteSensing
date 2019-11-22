@@ -78,3 +78,28 @@ Map.centerObject(AOI, 9);
 var ndviParams = {min: -1, max: 1, palette: ['blue', 'white', 'green']};
 Map.addLayer(ndvi, ndviParams, 'NDVI image');
 
+//EVI
+//evi index
+// Compute the EVI using an expression.
+var evi = scene.expression(
+    '2.5 * ((NIR - RED) / (NIR + 6 * RED - 7.5 * BLUE + 1))', {
+      'NIR': scene.select('B4'),
+      'RED': scene.select('B3'),
+      'BLUE': scene.select('B1')
+});
+
+var eviParams = {
+  min: 0.0,
+  max: 1.0,
+  palette: [
+    'FFFFFF', 'CE7E45', 'DF923D', 'F1B555', 'FCD163', '99B718', '74A901',
+    '66A000', '529400', '3E8601', '207401', '056201', '004C00', '023B01',
+    '012E01', '011D01', '011301'
+  ]};
+
+print(evi)
+Map.centerObject(AOI, 9);
+Map.addLayer(evi, eviParams, 'EVI image');
+
+
+
