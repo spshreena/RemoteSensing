@@ -2,7 +2,7 @@
 var AOI = ee.FeatureCollection('users/shreenapyakurel/AOI_dissolve');
 AOI = AOI.geometry();
 Map.centerObject(AOI);
-Map.addLayer(AOI, {color: 'yellow'}, 'AOI');
+Map.addLayer(AOI, {color: 'yellow'}, 'AOI',  false);
 
 
 //-----------------------------------------------------------------------------------------------------------------
@@ -26,8 +26,6 @@ var scene = sorted.first();
 
 //----------------------------------------------------------------------------------------------------------------
 // visualizing images in composites
-
-
 
 Map.centerObject(AOI);
 var visParams = {
@@ -55,40 +53,40 @@ var AOI = ee.FeatureCollection(AOI);
 var buff1000 = AOI.map(function(f) {
   return f.buffer(1000, 1); // Note that the errorMargin is set to 100.
 });
-Map.addLayer(buff1000, {color: 'green'}, '1000buff');
+Map.addLayer(buff1000, {color: 'green'}, '1000buff', false);
 
 var buff1500 = AOI.map(function(f) {
   return f.buffer(1500, 1); // Note that the errorMargin is set to 100.
 });
 
-Map.addLayer(buff1500, {color: 'blue'}, '1500buff');
+Map.addLayer(buff1500, {color: 'blue'}, '1500buff', false);
 
 
 var buff2000 = AOI.map(function(f) {
   return f.buffer(2000, 1); // Note that the errorMargin is set to 100.
 });
 
-Map.addLayer(buff2000, {color: 'orange'}, '2000buff');
+Map.addLayer(buff2000, {color: 'orange'}, '2000buff', false);
 
 var buff2500 = AOI.map(function(f) {
   return f.buffer(2500, 1); // Note that the errorMargin is set to 100.
 });
 
-Map.addLayer(buff2000, {color: 'teal'}, '2500buff');
+Map.addLayer(buff2000, {color: 'teal'}, '2500buff', false);
 
 var buff3000 = AOI.map(function(f) {
   return f.buffer(3000, 1); // Note that the errorMargin is set to 100.
 });
 
-Map.addLayer(buff3000, {color: 'pink'}, '3000buff');
+Map.addLayer(buff3000, {color: 'pink'}, '3000buff', false);
 
 //Clip Images
 
 var clippedTCC = scene.clip(buff3000);
 //TCC CLIP
-Map.addLayer(clippedTCC, visParams, 'Clipped Image_TCC');
+Map.addLayer(clippedTCC, visParams, 'Clipped Image_TCC', false);
 print(clippedTCC)
-Map.addLayer(clippedTCC, visParams, 'true-color composite');
+Map.addLayer(clippedTCC, visParams, 'true-color composite', false);
 
 //  FCC CLIP
 Map.setCenter(-72.404487, 42.064625, 13);
@@ -113,7 +111,7 @@ var ndviParams = {min: -1, max: 1, palette: [
     '66A000', '529400', '3E8601', '207401', '056201', '004C00', '023B01',
     '012E01', '011D01', '011301'
   ]};
-Map.addLayer(ndvi, ndviParams, 'NDVI image');
+Map.addLayer(ndvi, ndviParams, 'NDVI image', false);
 
 
 //evi index
@@ -136,7 +134,7 @@ var eviParams = {
 
 print(evi)
 Map.centerObject(AOI, 9);
-Map.addLayer(evi, eviParams, 'EVI image');
+Map.addLayer(evi, eviParams, 'EVI image', false);
 
 //NDBI
 // Compute the Normalized Difference Built-In Index (NDBI).
@@ -175,6 +173,7 @@ print("sorted", sortedwinter)
 // Get the first (least cloudy) image.
 var scenewinter = sortedwinter.first();
 
+
 Map.centerObject(AOI);
 var visParamswinter = {
   bands: ['B3', 'B2', 'B1'],
@@ -190,7 +189,7 @@ var buff3000winter = AOI.map(function(f) {
   return f.buffer(3000, 1); // Note that the errorMargin is set to 100.
 }); 
 
-Map.addLayer(scenewinter, visParamswinter, 'true-color composite winter');
+Map.addLayer(scenewinter, visParamswinter, 'true-color composite winter', false);
 
 
 var visParamsFCCwinter = {
@@ -208,30 +207,27 @@ var ndvi = scenewinter.normalizedDifference(['B4', 'B3']);
 // Display the result.
 Map.centerObject(AOI, 12);
 var ndviParams = {min: -1, max: 1, palette: ['blue', 'white', 'green']};
-Map.addLayer(ndvi, ndviParams, 'NDVI image winter');
+Map.addLayer(ndvi, ndviParams, 'NDVI image winter', false);
 
 
 //-------------------------------------------------------------------------------------------------------------------------
 
-//CLASSIFICATION
+//CLASSIFICATION using random forest algorithm 
 
 
 //Classes determined by setting points based on Massachusetts ortho imagery
 
-//var newfc = Urban_residential.merge(Pasture).merge(Conciferous).merge(Deciduous);
-//print(newfc,'newfc')
 
-var newfc = Water.merge(Agriculture).merge(Urban).merge(Deciduous).merge(Evergreen);
+var newfc = Water.merge(Cropland).merge(Urban_Res).merge(Conif).merge(Deci);
 print(newfc, 'newfc')
 
 
 // Use these bands for classification
 var bands = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6'];
 
-// The name of the property on the points storing the class label
-///var label = ['Landcover'];
+//train data
 
-var training = clippedTCC.select(bands).sampleRegions({
+var training = scene.select(bands).sampleRegions({
   collection: newfc,
   properties: ['Landcover'],
   scale: 30
@@ -247,32 +243,16 @@ var classifier = ee.Classifier.randomForest().train({
 
 //classify image 
 
-var classified = clippedTCC.select(bands).classify(classifier);
-Map.addLayer(classified,
-             {min: 0, max: 2, palette: ['red', 'green', 'blue']},
+  
+var classified = scene.select(bands).classify(classifier);
+
+var clippedClass = classified.clip(buff3000);
+
+Map.addLayer(clippedClass,
+             {min: 0, max: 4
+             , palette: ['blue', 'yellow', 'black','green', 'orange']},
              'classification');
     
-/*
-// Define a palette for the Land Use classification.
-var palette = [
-  'D3D3D3', // urban (0)  // grey
-  '0000FF', // water (1)  // blue
-  '008000' //  forest (2) // green
-];
-
-Map.addLayer(classified, {min: 0, max: 2, palette: palette}, 'Land Use Classification');
-
-/*
-///Create supervised classification image of coniferous forest
-var classified = clippedTCC.select(bands).classify(classifier);
-print(classified)
-
-//Map.addLayer(classified.clip(AOI),{min:0, max:1, palette: ['000000', '00FF00']}, 'color composite')
-
-
-*/
-
-
 
 
 
