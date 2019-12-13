@@ -1,3 +1,4 @@
+//Import shapefiles and training shapefiles 
 var table = ee.FeatureCollection("users/shreenapyakurel/AOI_dissolve"),
     Water = /* color: #d63000 */ee.FeatureCollection(
         [ee.Feature(
@@ -48,202 +49,6 @@ var table = ee.FeatureCollection("users/shreenapyakurel/AOI_dissolve"),
               "Landcover": 0,
               "system:index": "7"
             })]),
-    Cropland = /* color: #98ff00 */ee.FeatureCollection(
-        [ee.Feature(
-            ee.Geometry.Point([-71.94956266459599, 42.59071838571244]),
-            {
-              "Landcover": 1,
-              "system:index": "0"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.93901568924377, 42.58797399844339]),
-            {
-              "Landcover": 1,
-              "system:index": "1"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.9361211308871, 42.593608192050105]),
-            {
-              "Landcover": 1,
-              "system:index": "2"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.99238314718349, 42.59717811012977]),
-            {
-              "Landcover": 1,
-              "system:index": "3"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.96714892477138, 42.60981334507308]),
-            {
-              "Landcover": 1,
-              "system:index": "4"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.95108015958903, 42.5923335619095]),
-            {
-              "Landcover": 1,
-              "system:index": "5"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.94874127332804, 42.58964803560942]),
-            {
-              "Landcover": 1,
-              "system:index": "6"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.93584521238444, 42.592870653284194]),
-            {
-              "Landcover": 1,
-              "system:index": "7"
-            })]),
-    Urban_Res = /* color: #0b4a8b */ee.FeatureCollection(
-        [ee.Feature(
-            ee.Geometry.Point([-71.93945850696798, 42.608967782801734]),
-            {
-              "Landcover": 2,
-              "system:index": "0"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.94066013660665, 42.60876247792937]),
-            {
-              "Landcover": 2,
-              "system:index": "1"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.9223239609496, 42.6040954298634]),
-            {
-              "Landcover": 2,
-              "system:index": "2"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.95493962257069, 42.59701936456245]),
-            {
-              "Landcover": 2,
-              "system:index": "3"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.98746945350331, 42.58703569170943]),
-            {
-              "Landcover": 2,
-              "system:index": "4"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.96498319050886, 42.59562224393723]),
-            {
-              "Landcover": 2,
-              "system:index": "5"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.95129427363082, 42.596160237633924]),
-            {
-              "Landcover": 2,
-              "system:index": "6"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.97730097223922, 42.586618781725974]),
-            {
-              "Landcover": 2,
-              "system:index": "7"
-            })]),
-    Conif = /* color: #ffc82d */ee.FeatureCollection(
-        [ee.Feature(
-            ee.Geometry.Point([-71.93174633433028, 42.59399616131185]),
-            {
-              "Landcover": 3,
-              "system:index": "0"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.95552143503829, 42.5943594786442]),
-            {
-              "Landcover": 3,
-              "system:index": "1"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.9246055630843, 42.57910933863464]),
-            {
-              "Landcover": 3,
-              "system:index": "2"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.90816345058863, 42.61118598413095]),
-            {
-              "Landcover": 3,
-              "system:index": "3"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.9337578635525, 42.58989860691622]),
-            {
-              "Landcover": 3,
-              "system:index": "4"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.9293804984402, 42.587750111201636]),
-            {
-              "Landcover": 3,
-              "system:index": "5"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.91496094277613, 42.585348763650416]),
-            {
-              "Landcover": 3,
-              "system:index": "6"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.9178362708401, 42.58528556904464]),
-            {
-              "Landcover": 3,
-              "system:index": "7"
-            })]),
-    Deci = /* color: #00ffff */ee.FeatureCollection(
-        [ee.Feature(
-            ee.Geometry.Point([-71.9561802243287, 42.619083175756295]),
-            {
-              "Landcover": 4,
-              "system:index": "0"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.95643771639413, 42.618072601694564]),
-            {
-              "Landcover": 4,
-              "system:index": "1"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.9772788362032, 42.600249910648316]),
-            {
-              "Landcover": 4,
-              "system:index": "2"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.99161789852803, 42.6215372566292]),
-            {
-              "Landcover": 4,
-              "system:index": "3"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.95810101467794, 42.62076356782917]),
-            {
-              "Landcover": 4,
-              "system:index": "4"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.95556900936788, 42.62076356782917]),
-            {
-              "Landcover": 4,
-              "system:index": "5"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.99096327850367, 42.60753264102928]),
-            {
-              "Landcover": 4,
-              "system:index": "6"
-            }),
-        ee.Feature(
-            ee.Geometry.Point([-71.97143679687525, 42.59805610811934]),
-            {
-              "Landcover": 4,
-              "system:index": "7"
-            })]),
     geometry = 
     /* color: #d63000 */
     /* displayProperties: [
@@ -256,7 +61,7 @@ var table = ee.FeatureCollection("users/shreenapyakurel/AOI_dissolve"),
           [-72.02920099719438, 42.56127222010768],
           [-71.89873835071, 42.56127222010768],
           [-71.89873835071, 42.646180664039896]]], null, false),
-    u = /* color: #98ff00 */ee.FeatureCollection(
+    u = /* color: #fff2ec */ee.FeatureCollection(
         [ee.Feature(
             ee.Geometry.Polygon(
                 [[[-71.98286122843899, 42.591824862669895],
@@ -300,7 +105,7 @@ var table = ee.FeatureCollection("users/shreenapyakurel/AOI_dissolve"),
               "Landcover": 1,
               "system:index": "3"
             })]),
-    p = /* color: #0b4a8b */ee.FeatureCollection(
+    p = /* color: #f2ff15 */ee.FeatureCollection(
         [ee.Feature(
             ee.Geometry.Polygon(
                 [[[-71.95065858706539, 42.59138182091362],
@@ -344,7 +149,7 @@ var table = ee.FeatureCollection("users/shreenapyakurel/AOI_dissolve"),
               "Landcover": 2,
               "system:index": "3"
             })]),
-    d = /* color: #ffc82d */ee.FeatureCollection(
+    d = /* color: #cd300c */ee.FeatureCollection(
         [ee.Feature(
             ee.Geometry.Polygon(
                 [[[-71.9575748021457, 42.61901630145378],
@@ -398,7 +203,7 @@ var table = ee.FeatureCollection("users/shreenapyakurel/AOI_dissolve"),
               "Landcover": 3,
               "system:index": "3"
             })]),
-    c = /* color: #00ffff */ee.FeatureCollection(
+    c = /* color: #23c753 */ee.FeatureCollection(
         [ee.Feature(
             ee.Geometry.Polygon(
                 [[[-71.92305551587839, 42.598435047631774],
@@ -437,13 +242,12 @@ var table = ee.FeatureCollection("users/shreenapyakurel/AOI_dissolve"),
               "Landcover": 4,
               "system:index": "3"
             })]);
-
-//----------------------------------------------------------------------------------------------------------------------
 //Import study area 
 var AOI = ee.FeatureCollection('users/shreenapyakurel/AOI_dissolve');
 AOI = AOI.geometry();
 Map.centerObject(AOI);
 Map.addLayer(AOI, {color: 'yellow'}, 'AOI',  false);
+
 
 
 //-----------------------------------------------------------------------------------------------------------------
@@ -464,6 +268,47 @@ print("sorted", sorted)
 
 // Get the first (least cloudy) image.
 var scene = sorted.first();
+print(scene)
+
+// sxport training shapefiles
+Export.table.toDrive({
+  collection: u,
+  description:'Urban',
+  fileFormat: 'SHP'
+});
+
+Export.table.toDrive({
+  collection: Water,
+  description:'Water',
+  fileFormat: 'SHP'
+});
+
+Export.table.toDrive({
+  collection: p,
+  description:'pasture',
+  fileFormat: 'SHP'
+});
+
+Export.table.toDrive({
+  collection: c,
+  description:'conif',
+  fileFormat: 'SHP'
+});
+
+Export.table.toDrive({
+  collection: d,
+  description:'deci',
+  fileFormat: 'SHP'
+});
+
+//Projection of the site 
+var b1proj = scene.select('B1').projection();
+print('Band 1 projection: ', b1proj); // ee.Projection object
+
+//Date for the site 
+var date = ee.Date(scene.get('system:time_start'));
+print('Timestamp: ', date); // ee.Date
+
 
 //----------------------------------------------------------------------------------------------------------------
 // visualizing images in composites
@@ -535,67 +380,7 @@ Map.addLayer(clippedTCC, visParams, 'true-color composite', false);
 Map.setCenter(-72.404487, 42.064625, 13);
 Map.addLayer(clippedTCC, visParamsfcc, 'Clipped False Color (432)');
 
-//----------------------------------------------------------------------------------------------------------------------------
-//Indices 
-//NDVI
-//Hardcoding 
-//var nir = scene.select('B4');
-//var red = scene.select('B3');
-//var blue= scene.select('B1')
 
-//var ndvi = nir.subtract(red).divide(nir.add(red)).rename('NDVI');
-
-var ndvi = clippedTCC.normalizedDifference(['B4', 'B3']);
-print(ndvi)
-
-Map.centerObject(AOI, 9);
-var ndviParams = {min: -1, max: 1, palette: [
-    'FFFFFF', 'CE7E45', 'DF923D', 'F1B555', 'FCD163', '99B718', '74A901',
-    '66A000', '529400', '3E8601', '207401', '056201', '004C00', '023B01',
-    '012E01', '011D01', '011301'
-  ]};
-Map.addLayer(ndvi, ndviParams, 'NDVI image', false);
-
-
-//evi index
-// Compute the EVI using an expression.
-var evi =  clippedTCC.expression(
-    '2.5 * ((NIR - RED) / (NIR + 6 * RED - 7.5 * BLUE + 1))', {
-      'NIR':  clippedTCC.select('B4'),
-      'RED':  clippedTCC.select('B3'),
-      'BLUE':  clippedTCC.select('B1')
-});
-
-var eviParams = {
-  min: 0.0,
-  max: 3,
-  palette: [
-    'FFFFFF', 'CE7E45', 'DF923D', 'F1B555', 'FCD163', '99B718', '74A901',
-    '66A000', '529400', '3E8601', '207401', '056201', '004C00', '023B01',
-    '012E01', '011D01', '011301'
-  ]};
-
-print(evi)
-Map.centerObject(AOI, 9);
-Map.addLayer(evi, eviParams, 'EVI image', false);
-
-//NDBI
-// Compute the Normalized Difference Built-In Index (NDBI).
-var ndbi = clippedTCC.normalizedDifference(['B1', 'B4']);
-
-// Display the result.
-Map.centerObject(AOI, 12);
-var ndbiParams = {min: -1, max: 1, palette: ['blue', 'white', 'green']};
-Map.addLayer(ndbi, ndbiParams, 'NDBI image', false)
-
-
-//NDWI 
-var ndwi = clippedTCC.normalizedDifference(['B4', 'B5']);
-
-// Display the result.
-Map.centerObject(AOI, 12);
-var ndwiParams = {min: -1, max: 1, palette: ['red', 'white', 'blue']};
-Map.addLayer(ndwi, ndwiParams, 'NDWI image', false);
 
 //----------------------------------------------------------------------------------------------------------------
 
@@ -647,8 +432,8 @@ var visParamsFCCwinter = {
   max: 3000,
   gamma: 1.4,
 };
-
-Map.addLayer(scenewinter, visParamsFCCwinter, 'False-color composite winter');
+var clippedwfCC = scenewinter.clip(buff3000);
+Map.addLayer(clippedwfCC, visParamsFCCwinter, 'False-color composite winter');
 
 var ndvi = scenewinter.normalizedDifference(['B4', 'B3']);
 
@@ -663,23 +448,13 @@ Map.addLayer(ndvi, ndviParams, 'NDVI image winter', false);
 
 //CLASSIFICATION
 
-
-//Classes determined by setting points based on Massachusetts ortho imagery
-
-//var newfc = Urban_residential.merge(Pasture).merge(Conciferous).merge(Deciduous);
-//print(newfc,'newfc')
-
-var newfc = Water.merge(Cropland).merge(Urban_Res).merge(Conif).merge(Deci);
-print(newfc, 'newfc')
-
 var newfc1 = Water.merge(u).merge(p).merge(d).merge(c);
 print(newfc1, 'newfc')
 
 // Use these bands for classification
-var bands = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6'];
+var bands = ['B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7'];
 
-// The name of the property on the points storing the class label
-///var label = ['Landcover'];
+// Select bands to train data
 
 var training1 = scene.select(bands).sampleRegions({
   collection: newfc1,
@@ -688,7 +463,7 @@ var training1 = scene.select(bands).sampleRegions({
 });
 
 // Sample the composite to generate training data.  Note that the
-// class label is stored in the 'landcover' property
+// Train Data
 var classifier1 = ee.Classifier.randomForest().train({
   features: training1,
   classProperty: 'Landcover',
@@ -696,8 +471,6 @@ var classifier1 = ee.Classifier.randomForest().train({
 });
 
 //classify image 
-
-  
 var classified1 = scene.select(bands).classify(classifier1);
 
 var clippedClass1 = classified1.clip(buff3000);
@@ -713,8 +486,147 @@ Map.addLayer(clippedClass1,
       scale: 30,
       region: geometry
     });
-    
+
+Map.addLayer(AOI, {color: 'yellow'}, 'AOI',  true);
+
+
+//Create Confusion Matrix
+
+var Random = training1.randomColumn();
+
+var Matrix = classifier1.confusionMatrix();
+// Approximately 70% of our training data
+var trainingPartition = Random.filter(ee.Filter.lt('random', 0.7));
+// Approximately 30% of our training data
+var testingPartition = Random.filter(ee.Filter.gte('random', 0.3));
+
+// Trained with 70% of our data.
+var trainedClass = ee.Classifier.randomForest().train({
+  features: trainingPartition, 
+  classProperty: 'Landcover', 
+  inputProperties: bands
+});
+
+var test = testingPartition.classify(trainedClass);
+print(test, 'test');
+
+//Creates error matrix using the actual and the predicted values 
+var errorMatrix = test.errorMatrix('Landcover', 'classification');
+
+var OA = Matrix.accuracy()
+var CA = Matrix.consumersAccuracy()
+var Kappa =Matrix.kappa()
+var Order = Matrix.order()
+var PA = Matrix.producersAccuracy()
+ 
+print(Matrix,'Confusion Matrix')
+print(OA,'Overall Accuracy')
+print(CA,'Consumers Accuracy')
+print(Kappa,'Kappa')
+print(Order,'Order')
+print(PA,'Producers Accuracy')
+//--------------------------------------------------------------------------------------------------------------------------------
+
+
+//Area Chart 3000m
+var options = {
+  lineWidth: 1,
+  pointSize: 2,
+  hAxis: {title: 'Classes'},
+  vAxis: {title: 'Area m^2'},
+  title: 'Area by class',
+  series: {
+    0: { color:'blue'},
+    1: { color: 'yellow'},
+    2: { color: 'black'},
+    3: { color: 'green'},
+    4: {color: 'orange'}
+  }
+};
+var area3000 = ui.Chart.image.byClass({
+  image: ee.Image.pixelArea().addBands(clippedClass1),
+  classBand: 'classification', 
+  region: buff3000,
+  scale: 30,
+  reducer: ee.Reducer.sum()
+}).setSeriesNames(['Water', 'u', 'p', 'd', 'c']).setOptions(options);
 
 
 
+var area2500 = ui.Chart.image.byClass({
+  image: ee.Image.pixelArea().addBands(clippedClass1),
+  classBand: 'classification', 
+  region: buff2500,
+  scale: 30,
+  reducer: ee.Reducer.sum()
+}).setSeriesNames(['Water', 'u', 'p', 'd', 'c']).setOptions(options);
 
+print('2500m Buffer area: ',area2500)
+
+var area2000 = ui.Chart.image.byClass({
+  image: ee.Image.pixelArea().addBands(clippedClass1),
+  classBand: 'classification', 
+  region: buff2000,
+  scale: 30,
+  reducer: ee.Reducer.sum()
+}).setSeriesNames(['Water', 'u', 'p', 'd', 'c']).setOptions(options);
+
+print('2000m Buffer area: ',area2000)
+
+var area1500 = ui.Chart.image.byClass({
+  image: ee.Image.pixelArea().addBands(clippedClass1),
+  classBand: 'classification', 
+  region: buff1500,
+  scale: 30,
+  reducer: ee.Reducer.sum()
+}).setSeriesNames(['Water', 'u', 'p', 'd', 'c']).setOptions(options);
+
+print('1500 Buffer area: ',area1500)
+
+var area1000 = ui.Chart.image.byClass({
+  image: ee.Image.pixelArea().addBands(clippedClass1),
+  classBand: 'classification', 
+  region: buff1000,
+  scale: 30,
+  reducer: ee.Reducer.sum()
+}).setSeriesNames(['Water', 'u', 'p', 'd', 'c']).setOptions(options);
+
+print('1000 Buffer area: ',area1000)
+
+var buff500 = AOI.map(function(f) {
+  return f.buffer(500, 1); // Note that the errorMargin is set to 100.
+});
+
+var area500 = ui.Chart.image.byClass({
+  image: ee.Image.pixelArea().addBands(clippedClass1),
+  classBand: 'classification', 
+  region: buff500,
+  scale: 30,
+  reducer: ee.Reducer.sum()
+}).setSeriesNames(['Water', 'u', 'p', 'd', 'c']).setOptions(options);
+
+print('500 Buffer area: ',area500)
+
+var clippedsite = classified1.clip(AOI);
+print(clippedsite)
+var areasite = ui.Chart.image.byClass({
+  image: ee.Image.pixelArea().addBands(clippedClass1),
+  classBand: 'classification', 
+  region: AOI,
+  scale: 30,
+  reducer: ee.Reducer.sum()
+}).setSeriesNames(['Water', 'u', 'p', 'd', 'c']).setOptions(options);
+print('site area: ',areasite)
+
+//--------------------------------------------------------------------------------------------------------------------------------
+//Export TCC
+Export.image.toDrive({
+  image: scene,
+  description: 'scene',
+  scale: 30,
+  region: geometry
+});
+
+var img = ee.Image.pixelArea();
+Map.setCenter(0, 0, 3);
+Map.addLayer(img, {min: 2e8, max: 4e8, opacity: 0.85}, 'pixel area');
